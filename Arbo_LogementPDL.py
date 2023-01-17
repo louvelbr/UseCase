@@ -34,11 +34,11 @@ class PDL:
                 return found
         return None
 
-    def find_leaves(self):
+    def find_leaves(self, type=None):
         leaves = []
-        if not self.children:
+        if not self.children and (type is None or (type is not None and type == self.type)):
             leaves.append(self)
         else:
             for child in self.children:
-                leaves.extend(child.find_leaves())
+                leaves.extend(child.find_leaves(type))
         return leaves
