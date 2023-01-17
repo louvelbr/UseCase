@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # Jupyter notebook checkpoint
-.ipynb/checkpoint/*
+.ipynb_checkpoints/*
