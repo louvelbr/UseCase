@@ -22,7 +22,7 @@ function UseRange(props) {
                     <span>Lave-linge : </span>
                     <span>12h - 16h</span>
                 </div>
-                <div onChange={handleOnChange}>
+                <div className='proposition' onChange={handleOnChange}>
                     <span className='radioBtns'>Cela vous convient-il ?  
                         <input className='radioBtn' type="radio" name="yes" value="Oui" checked={answer === "Oui"}/> Oui 
                         <input className='radioBtn' type="radio" name="no" value="Non" checked={answer === "Non"}/> Non 

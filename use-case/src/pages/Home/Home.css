@@ -1,4 +1,4 @@
-@import url(../styles/colors.css);
+@import url(../../styles/colors.css);
 
 fieldset{
     margin-right: 20px;
@@ -39,7 +39,10 @@ fieldset{
 
 input{
     width: 100%;
+    border: none;
     padding: 5px;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+    color: var(--primary-color-white);
     margin-right: 10px;
 }
 
@@ -60,7 +63,10 @@ label span{
 
 select{
     width: 25%;
+    border: none;
     padding: 5px;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+    color: var(--primary-color-white);
     margin-right: 10px;
     margin-left: 10px;
 }
