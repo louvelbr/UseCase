@@ -1,0 +1,8 @@
+:root {
+    --color-light-green : #b6e200;
+    --color-green : #71c200;
+    --color-dark-green : #4d8800;
+    --color-blue : #00859b;
+    --color-light-blue: rgba(156, 230, 233,0.5); /*#9ce7e9*/
+    --primary-color-white: #FFFFFF;
+}

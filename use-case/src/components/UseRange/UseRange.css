@@ -1,0 +1,15 @@
+.radioBtns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radioBtn{
+    width: auto;
+}
+
+.proposition{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
