@@ -3,14 +3,14 @@
 .App {
   /* background-color: var(--color-light-blue) ; */
   /* background-image: url(../assets/image-test2.jpeg); */
-  /* background-image: url(../assets/industrie-energies-nouvelles.jpeg); */
-  /* background-image: url(../assets/sunset-1786582.jpg); number 2 */
+  /* background-image: url(../assets/industrie-energies-nouvelles.jpeg); 
   /* background-image: url(../assets/cape-ortegal-117601_1920.jpg);  number 1 */
   /* background-image: url(../assets/324639780_554103413438751_1893860415232768902_n.png); number3 */
-  background-image: url(../assets/dall_e.png);
+  background-image: url(../assets/dall_e.png); 
   background-size: cover;
   position: relative;
   background-position: center center;
+  height: 100vh;
 }
 
 .title {
