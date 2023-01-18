@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import './HomeComposition.css'
 
-function HomeComposition({tab_infos_user_optimisation_2}) {
+function HomeComposition({tab_infos_user, set_tab_infos_user}) {
     const[nbRange, setNbRange] = useState(1);
-    const[tab_infos_user, set_tab_infos_user] = useState({
-        "type_habitation": "Maison",
-        "surface": 0,
-        "habitants": 0,
-        "debut_plage_horaire": "0:00"
-    });
 
     const[tab_infos_user_optimisation , set_tab_infos_user_optimisation ] = useState({
         size: 0,
@@ -16,7 +10,8 @@ function HomeComposition({tab_infos_user_optimisation_2}) {
         washingMashine: false,
         clothesDryer: false,
         dishWasher: false,
-        fridge: false,
+        fridge1: false,
+        waterHeater1: false,
         freezer: false,
         oven: false,
         hotplates: false,
@@ -174,7 +169,10 @@ function HomeComposition({tab_infos_user_optimisation_2}) {
                             <input type="checkbox" name="washingMachine" className='optimisation'/> Lave-Linge
                             <input type="checkbox" name="clothesDryer" className='optimisation'/> Sèche-Linge
                             <input type="checkbox" name="dishWasher" className='optimisation'/> Lave-Vaisselle
-                            <input type="checkbox" name="fridge" className='optimisation'/> Réfrigérateur
+                            <input type="checkbox" name="fridge1" className='optimisation'/> Réfrigérateur
+                            <input type="checkbox" name="fridge2" className='optimisation'/> Deuxième Réfrigérateur
+                            <input type="checkbox" name="waterHeater1" className='optimisation'/> Chauffe-eau
+                            <input type="checkbox" name="waterHeater2" className='optimisation'/> Deuxième Chauffe-eau
                             <input type="checkbox" name="freezer" className='optimisation'/> Congélateur
                             <input type="checkbox" name="oven" className='optimisation'/> Four
                             <input type="checkbox" name="hotplates" className='optimisation'/> Plaques de Cuisson (électriques)
@@ -215,7 +213,7 @@ function HomeComposition({tab_infos_user_optimisation_2}) {
                         </span>
                     </label>
                     <label>
-                        <span>Sélectionnez la plage horaire sur laquelle vous voulez estimer votre consommation</span>
+                        <span>Sélectionnez la plage horaire sur laquelle vous voulez estimer votre consommation :</span>
                         <select className='prediction' name="debut_plage_horaire" id="range" form="range" onChange={handleOnChangeSelectTime}>
                             <option value="conso(kWh)">Toute la journée</option>
                             <option value="0:00">0:00</option>

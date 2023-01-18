@@ -69,9 +69,14 @@ select{
     color: var(--primary-color-white);
     margin-right: 10px;
     margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 legend{
     font-size: 24px;
     font-weight: 600;
+}
+
+option{
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 }
