@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Form
+from fastapi import FastAPI
 import pandas as pd
 from statsmodels.tsa.arima.model import ARIMA
 from pydantic import BaseModel
@@ -13,8 +13,7 @@ class Item(BaseModel):
 
 @app.post("/prediction_consommation")
 def electricity_prediction(item: Item):
-    
-    data = pd.read_csv("{}{}-{}.csv".format(item.type_habitation[0], item.surface, item.habitants), parse_dates=["Date"])
+    data = pd.read_csv("{}{}-{}.csv".format(item.type_habitation[0].upper(), item.surface, item.habitants), parse_dates=["Date"])
 
     # Convertir la colonne "date" en format de date
     data["Date"] = pd.to_datetime(data["Date"])
