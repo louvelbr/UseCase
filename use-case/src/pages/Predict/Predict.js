@@ -6,12 +6,15 @@ import UseRange from '../../components/UseRange/UseRange';
 import YourConsumption from '../../components/YourConsumption/YourConsumption';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-function Predict(props) {
+import { useLocation } from 'react-router-dom';
+function Predict() {
+    const location = useLocation(); 
+    const tab_infos_user = location.state.tab_infos_user;
     return (
         <div className='App'>
             <Header/>
             <div className='container'>
-                <ConsumptionPrediction></ConsumptionPrediction>
+                <ConsumptionPrediction tab_infos_user={tab_infos_user}></ConsumptionPrediction>
                 <UseRange></UseRange>
                 <YourConsumption></YourConsumption>
                 <GlobalConsumption></GlobalConsumption>

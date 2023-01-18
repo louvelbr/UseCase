@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './HomeComposition.css'
 
-function HomeComposition(props) {
+function HomeComposition({tab_infos_user}) {
     const[nbRange, setNbRange] = useState(1)
    var tab_infos_user =  {
         size: 0,
