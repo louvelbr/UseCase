@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './HomeComposition.css'
 
-function HomeComposition({tab_infos_user, set_tab_infos_user, tab_infos_user_optimisation, set_tab_infos_user_optimisation}) {
+function HomeComposition({tab_infos_user, set_tab_infos_user, tab_infos_user_optimisation, set_tab_infos_user_optimisation, repere, setRepere}) {
     const[nbRange, setNbRange] = useState(1);
-
     const handleChange = async (e) => {
         let name = e.target.name;
 		let value = e.target.value;
@@ -101,6 +100,11 @@ function HomeComposition({tab_infos_user, set_tab_infos_user, tab_infos_user_opt
         let value = e.target.value;
         set_tab_infos_user(tab => ({...tab, "debut_plage_horaire": value}))
     }
+
+    const handleOnChangeRepere= async (e) => {
+        let value = e.target.value;
+        setRepere(value);
+    }
     
     return (
         <div className='block'>
@@ -147,6 +151,8 @@ function HomeComposition({tab_infos_user, set_tab_infos_user, tab_infos_user_opt
                             </select>
                          )
                         }
+                        <span>Repère sur le réseau :</span>
+                        <input type="number" name="repere" className='repere' placeholder='000' onChange={handleOnChangeRepere}/> 
                     </label>
                     <label>
                         <span>Equipements :</span>

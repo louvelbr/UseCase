@@ -31,12 +31,15 @@ function Home() {
             begin: 0,
             end: 0}
     });
+
+    const[repere, setRepere] = useState(0);
+
     return (
         <div className='container'>
-            <HomeComposition tab_infos_user={tab_infos_user} set_tab_infos_user={set_tab_infos_user} tab_infos_user_optimisation={tab_infos_user_optimisation} set_tab_infos_user_optimisation={set_tab_infos_user_optimisation}></HomeComposition>
+            <HomeComposition tab_infos_user={tab_infos_user} set_tab_infos_user={set_tab_infos_user} tab_infos_user_optimisation={tab_infos_user_optimisation} set_tab_infos_user_optimisation={set_tab_infos_user_optimisation} repere={repere} setRepere={setRepere}></HomeComposition>
             {/* <UseFrequency></UseFrequency> */}
             <Plot data={graph} layout={ {title: 'Consommation globale par heure', plot_bgcolor: "transparent", paper_bgcolor:"transparent", font: {color: "#fff", size: 14}} }/>
-            <Link to='/results' state={{tab_infos_user: tab_infos_user, tab_infos_user_optimisation: tab_infos_user_optimisation}}>
+            <Link to='/results' state={{tab_infos_user: tab_infos_user, tab_infos_user_optimisation: tab_infos_user_optimisation, repere: repere}}>
                     <button className='btn-next'>Predict</button>
             </Link>
         </div>

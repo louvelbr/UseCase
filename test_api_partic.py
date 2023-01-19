@@ -1,3 +1,6 @@
+import plotly.graph_objects as go
+import plotly
+import json
 from fastapi import FastAPI
 import pandas as pd
 from statsmodels.tsa.arima.model import ARIMA
@@ -48,54 +51,55 @@ class Optim(BaseModel):
     range2: Optional[Range] = None
     range3: Optional[Range] = None
     range4: Optional[Range] = None
-        
-        
 
-@app.post("/prediction_consommation_type")
+@app.post("/prediction_consommation")
 def electricity_prediction(item: Item):
-    print("laaaaaaaaaaaaaaaaaaaaaaaa")
-    data = pd.read_csv("{}{}-{}.csv".format(item.type_habitation[0].upper(), item.surface, item.habitants), parse_dates=["Date"])
-
-    # Convertir la colonne "date" en format de date
-    data["Date"] = pd.to_datetime(data["Date"])
-
-    # Définir la colonne "date" comme étant la variable cible
-    data = data.set_index("Date")
-
-    #focus sur une plage de 30min
-    model = ARIMA(data[item.debut_plage_horaire], order=(2,1,2)).fit()
-    prediction = model.forecast(steps=1)
-    return {"prediction_conso": prediction.values[0],
-            "unité": "kWh"}
-
-@app.post("/prediction_consommation_id")
-def electricity_prediction(item: Item):
-    print("iciiiiiiiiiiiiiiiiiiii")
     data = pd.read_csv("data_maison_{}{}-{}-659.csv".format(item.type_habitation[0].upper(), item.surface, item.habitants), parse_dates=["Date"])
 
-
-
     # Convertir la colonne "date" en format de date
-
     data["Date"] = pd.to_datetime(data["Date"])
-
     data = data.set_index("Date")
 
-
-
     #prediction
+    # model = ARIMA(data[item.debut_plage_horaire], order=(2,1,0)).fit()
+    # prediction = model.forecast(steps=1)
+    # y = list(prediction.values[0])
+    # x = list(data.index)
 
-    model = ARIMA(data[item.debut_plage_horaire], order=(2,1,0)).fit()
+    # Entraîner le modèle ARIMA
+    models = {}
+    for col in data.columns:
+        models[col] = ARIMA(data[col], order=(2,1,0)).fit()
 
-    prediction = model.forecast(steps=1)
+    forecast = []
+    # Afficher les prévisions pour chaque modèle
+    for col in models:
+        forecast.append(models[col].forecast(steps=1))
 
-    return {"prediction_conso": prediction.values[0],
+    x = list(data.columns)[1:]
+    y = list(forecast)[1:]
 
-            "unité": "kWh"}
+    # Create a trace
+    trace = go.Scatter(
+        x=x,
+        y=y,
+        mode='lines+markers',
+        name='Prediction'
+    )
+
+    data = [trace]
+
+    # Convert the plot to JSON
+    plot_json = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+    return {"prediction_conso": forecast[0],
+            "unité": "kWh",
+            "graphique": plot_json}
 
 @app.post("/optimisation_consommation")
 def electricity_optimisation(item: Optim):
     print("je suis ici", item.size)
     
     return ("hello ohohohoh ",item.size, item.nbPeople, "yay")
-#uvicorn test_api_json:app --reload
+
+
+#uvicorn test_api_partic:app --reload

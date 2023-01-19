@@ -1,8 +1,10 @@
 .Loading {
     width: 28px;
     height: 28px;
-    display: inline-block;
-    border: 2px solid #3765AF;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    border: 2px solid white;
     border-right-color: transparent;
     border-radius: 50%;
     animation: rotate 1s infinite linear;

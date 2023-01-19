@@ -11,12 +11,13 @@ function Predict() {
     const location = useLocation(); 
     const tab_infos_user = location.state.tab_infos_user;
     const tab_infos_user_optimisation = location.state.tab_infos_user_optimisation;
+    const repere = location.state.repere;
     console.log("tab_infos_user_optimisation  RARARAR =  ",tab_infos_user_optimisation)
     return (
         <div className='App'>
             <Header/>
             <div className='container'>
-                {/* <ConsumptionPrediction tab_infos_user={tab_infos_user}></ConsumptionPrediction> */}
+                <ConsumptionPrediction tab_infos_user={tab_infos_user} repere={repere}></ConsumptionPrediction>
                 <UseRange tab_infos_user_optimisation={tab_infos_user_optimisation}/>
                 {/* <YourConsumption></YourConsumption> */}
                 <GlobalConsumption></GlobalConsumption>
