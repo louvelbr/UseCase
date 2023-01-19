@@ -1,0 +1,106 @@
+[
+  {
+    "Type": "A15-1",
+    "Prediction": "7,58"
+  },
+  {
+    "Type": "A25-1",
+    "Prediction": "8,97"
+  },
+  {
+    "Type": "A30-2",
+    "Prediction": "10,78"
+  },
+  {
+    "Type": "A50-2",
+    "Prediction": "20,95"
+  },
+  {
+    "Type": "A50-3",
+    "Prediction": "30,72"
+  },
+  {
+    "Type": "A100-3",
+    "Prediction": "44,46"
+  },
+  {
+    "Type": "A110-5",
+    "Prediction": "43,94"
+  },
+  {
+    "Type": "A120-4",
+    "Prediction": "47,91"
+  },
+  {
+    "Type": "A130-4",
+    "Prediction": "52,82"
+  },
+  {
+    "Type": "A150-6",
+    "Prediction": "66,16"
+  },
+  {
+    "Type": "M50-2",
+    "Prediction": "25,44"
+  },
+  {
+    "Type": "M65-3",
+    "Prediction": "32,55"
+  },
+  {
+    "Type": "M80-2",
+    "Prediction": "27,25"
+  },
+  {
+    "Type": "M85-3",
+    "Prediction": "28,42"
+  },
+  {
+    "Type": "M90-4",
+    "Prediction": "38,44"
+  },
+  {
+    "Type": "M100-3",
+    "Prediction": "35,43"
+  },
+  {
+    "Type": "M110-4",
+    "Prediction": "40,27"
+  },
+  {
+    "Type": "M120-5",
+    "Prediction": "55,44"
+  },
+  {
+    "Type": "M135-3",
+    "Prediction": "48,04"
+  },
+  {
+    "Type": "M140-5",
+    "Prediction": "50,77"
+  },
+  {
+    "Type": "M150-4",
+    "Prediction": "63,61"
+  },
+  {
+    "Type": "M160-5",
+    "Prediction": "67,73"
+  },
+  {
+    "Type": "M170-6",
+    "Prediction": "73,49"
+  },
+  {
+    "Type": "M180-5",
+    "Prediction": "75,06"
+  },
+  {
+    "Type": "M200-6",
+    "Prediction": "72,71"
+  },
+  {
+    "Type": "M250-5",
+    "Prediction": "88,22"
+  }
+]

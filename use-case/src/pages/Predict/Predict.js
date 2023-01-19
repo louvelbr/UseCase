@@ -10,13 +10,15 @@ import { useLocation } from 'react-router-dom';
 function Predict() {
     const location = useLocation(); 
     const tab_infos_user = location.state.tab_infos_user;
+    const tab_infos_user_optimisation = location.state.tab_infos_user_optimisation;
+    console.log("tab_infos_user_optimisation  RARARAR =  ",tab_infos_user_optimisation)
     return (
         <div className='App'>
             <Header/>
             <div className='container'>
-                <ConsumptionPrediction tab_infos_user={tab_infos_user}></ConsumptionPrediction>
-                <UseRange></UseRange>
-                <YourConsumption></YourConsumption>
+                {/* <ConsumptionPrediction tab_infos_user={tab_infos_user}></ConsumptionPrediction> */}
+                <UseRange tab_infos_user_optimisation={tab_infos_user_optimisation}/>
+                {/* <YourConsumption></YourConsumption> */}
                 <GlobalConsumption></GlobalConsumption>
             </div>
             <Footer/>

@@ -1,15 +1,17 @@
 import React from 'react';
-import './GlobalConsumption.css'
+import './GlobalConsumption.css';
+import * as graph from '../../graphe.json';
+import Plot from 'react-plotly.js';
+// graph par heure des consos de jenna
 function GlobalConsumption(props) {
     return (
-        <div>
+        <div className='globalConsumption'>
             <fieldset className='fieldset'>
-                <legend>Consommation globale</legend>
-                <span>11111 kw/h</span>
-                <span>Vous êtes dans la moyenne haute/basse</span>
+            <legend className='titleGlobalConsumption'>Consommation globale par heure</legend>
+                <Plot data={graph} layout={ {title: 'Consommation globale par heure', plot_bgcolor: "transparent", paper_bgcolor:"transparent", font: {color: "#fff", size: 14}} }/>
             </fieldset>
         </div>
     );
 }
 
-export default GlobalConsumption;
+export default GlobalConsumption; 

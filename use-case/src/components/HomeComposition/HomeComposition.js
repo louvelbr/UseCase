@@ -1,24 +1,8 @@
 import React, { useState } from 'react';
 import './HomeComposition.css'
 
-function HomeComposition({tab_infos_user, set_tab_infos_user}) {
+function HomeComposition({tab_infos_user, set_tab_infos_user, tab_infos_user_optimisation, set_tab_infos_user_optimisation}) {
     const[nbRange, setNbRange] = useState(1);
-
-    const[tab_infos_user_optimisation , set_tab_infos_user_optimisation ] = useState({
-        size: 0,
-        nbPeople: 0,
-        washingMashine: false,
-        clothesDryer: false,
-        dishWasher: false,
-        fridge1: false,
-        waterHeater1: false,
-        freezer: false,
-        oven: false,
-        hotplates: false,
-        range1: {
-            begin: 0,
-            end: 0},
-    });
 
     const handleChange = async (e) => {
         let name = e.target.name;
@@ -34,7 +18,7 @@ function HomeComposition({tab_infos_user, set_tab_infos_user}) {
                 tab_infos_user_optimisation[name] = true;
             }else if(value === "off") {
                 tab_infos_user_optimisation[name] = false;
-            }else if ((name != "range1-begin") && (name != "range1-end") && (name != "range2-begin")&& (name != "range2-end") && (name != "range3-begin")&& (name != "range3-end") && (name != "range4-begin")&& (name != "range4-end")){
+            }else if ((name != "range1-begin") && (name != "range1-end") && (name != "range2-begin")&& (name != "range2-end") && (name != "range3-begin")&& (name != "range3-end") && (name != "range4-begin")&& (name != "range4-end") && (name != "range")){
                 tab_infos_user_optimisation[name] = value;
             }
             switch (name) {
@@ -98,6 +82,7 @@ function HomeComposition({tab_infos_user, set_tab_infos_user}) {
     const handleOnChangeSelectHomeType= async (e) => {
         let value = e.target.value;
         set_tab_infos_user(tab => ({...tab, "type_habitation": value}));
+        set_tab_infos_user_optimisation(tab => ({...tab, "type": value}));
     }
 
     const handleOnChangeSelectSurfaceNbPeople= async (e) => {
@@ -124,7 +109,7 @@ function HomeComposition({tab_infos_user, set_tab_infos_user}) {
                     <legend>Composition Habitation</legend>
                     <label>
                         <span>Choisissez votre type d'habitation : </span>
-                        <select className='prediction' name="type_habitation" id="homeType" form="homeType" onChange={handleOnChangeSelectHomeType}>
+                        <select className='prediction_optimisation' name="type_habitation" id="homeType" form="homeType" onChange={handleOnChangeSelectHomeType}>
                             <option value="Maison" name="type_habitation">Maison</option>
                             <option value="Appartement" name="type_habitation">Appartement</option>
                         </select>
@@ -176,11 +161,12 @@ function HomeComposition({tab_infos_user, set_tab_infos_user}) {
                             <input type="checkbox" name="freezer" className='optimisation'/> Congélateur
                             <input type="checkbox" name="oven" className='optimisation'/> Four
                             <input type="checkbox" name="hotplates" className='optimisation'/> Plaques de Cuisson (électriques)
+                            <input type="checkbox" name="TV" className='optimisation'/> Télévision
                         </span>
                     </label>
                     <label>
                         <span>Heures creuses :</span>
-                        <span>Combien de plages horaires avez-vous ?</span>
+                        <span>Combien de plages d'heures creuses avez-vous ?</span>
                         <select className='optimisation' name="range" id="range" form="range" onChange={handleOnChangeSelectRange}>
                             <option value="1">1</option>
                             <option value="2">2</option>
