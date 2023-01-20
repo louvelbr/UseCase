@@ -3,7 +3,7 @@ import pandas as pd
 class EquipementMaison:
 
     def __init__(self):
-        self.data = pd.read_excel("./data use case SPIE.xlsx", sheet_name=2, usecols=[2,3,5,6,7,8,9,10,11,12,13,14,15], names=('id', 'type', 'LV', 'LL', 'SL', 'TV', 'FG1', 'CE1', 'CG', 'FO', 'PL', 'FG2', 'CE2'))
+        self.data = pd.read_excel("./data-use-case-SPIE.xlsx", sheet_name=2, usecols=[2,3,5,6,7,8,9,10,11,12,13,14,15], names=('id', 'type', 'LV', 'LL', 'SL', 'TV', 'FG1', 'CE1', 'CG', 'FO', 'PL', 'FG2', 'CE2'))
         self.data = self.data[7:]
         self.data = self.data[['id', 'type', 'TV', 'FG1', 'CG', 'FG2', 'SL', 'PL', 'LV', 'FO', 'LL', 'CE1', 'CE2']]
 
@@ -63,6 +63,8 @@ class EquipementMaison:
         return self.find_close(type, equipment, nb_equipment+1)
 
     def find_id(self, equipment):
+        print("equipement ==========   ")
+        print(equipment)
         if equipment["type"] == "Maison":
             type = "M" + str(equipment["size"]) + "-" + str(equipment["nbPeople"])
         else:
@@ -77,24 +79,33 @@ class EquipementMaison:
             if equipment[i]: nb_equipment += 1
         return self.find_close(type, equipment, nb_equipment+1)
 
-"""equipment = {
-    "size": 180,
-    "nbPeople": 5,
-    "type": "Maison", #"Appartement"
-    "washingMachine": True,
-    "clothesDryer": False,
-    "dishWasher": True,
-    "fridge1": False,
-    "waterHeater1": True,
-    "waterHeater2": False,
-    "freezer": True,
-    "oven": True,
-    "hotplates": True,
-    "television": True,
-    "range1": {
-        "begin": 0,
-        "end": 0}
-}
+# equipment = {
+#     "size": 180,
+#     "nbPeople": 5,
+#     "type": "Maison", #"Appartement"
+#     "washingMachine": True,
+#     "clothesDryer": False,
+#     "dishWasher": True,
+#     "fridge1": False,
+#     "waterHeater1": True,
+#     "waterHeater2": False,
+#     "freezer": True,
+#     "oven": True,
+#     "hotplates": True,
+#     "television": True,
+#     "range1": {
+#         "begin": 0,
+#         "end": 0}
+# }
 
-em = EquipementMaison()
-print(em.find_id(equipment))"""
+# em = EquipementMaison()
+# tmp = em.find_id(equipment)
+# dossier = em.find_id(equipment)[0].split("-")[0].split("M")[1]
+# dossier_binaire = em.find_id(equipment)[2]
+# fichier = em.find_id(equipment)[0]
+# chemin_acces = "data_optim/res_optim/"+dossier+"/"+dossier_binaire+"/"+fichier+".csv"
+# print("dossier = ", dossier)
+# print("dossier_binaire = ", dossier_binaire)
+# print("fichier = ", fichier)
+# print("chemin d'accès = ", chemin_acces)
+# print("hello",em.find_id(equipment))

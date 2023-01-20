@@ -4,6 +4,8 @@ from statsmodels.tsa.arima.model import ARIMA
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
+from EquipementMaison import EquipementMaison
+import csv
 
 app = FastAPI()
 
@@ -95,7 +97,41 @@ def electricity_prediction(item: Item):
 
 @app.post("/optimisation_consommation")
 def electricity_optimisation(item: Optim):
-    print("je suis ici", item.size)
-    
-    return ("hello ohohohoh ",item.size, item.nbPeople, "yay")
+    #print("laaaaaaaaaaaaaa", type(item["type"]))
+
+    equipment = {
+    "size": item.size,
+    "nbPeople": item.nbPeople,
+    "type": item.type, #"Appartement"
+    "washingMachine": item.washingMachine,
+    "clothesDryer": item.clothesDryer,
+    "dishWasher": item.dishWasher,
+    "fridge1": item.fridge1,
+    "waterHeater1": item.waterHeater1,
+    "waterHeater2": item.waterHeater2,
+    "freezer": item.freezer,
+    "oven": item.oven,
+    "hotplates": item.hotplates,
+    "television": item.TV,
+    "range1": {
+        "begin": item.range1.begin,
+        "end": item.range1.end}
+}
+    print("laaaaa")
+    em = EquipementMaison()
+    print(equipment)
+    find = em.find_id(equipment)
+    dossier = find[0].split("-")[0].split("M")[1]
+    dossier_binaire = find[2]
+    fichier = find[0]
+    csvString = ""
+    chemin_acces = "data_opti/res_opti/"+dossier+"/"+dossier_binaire+"/"+fichier+".csv"
+    with open("./use-case/src/"+chemin_acces, 'r') as file:
+        csvreader = csv.reader(file)
+        for row in csvreader:
+            print(row[0])
+            csvString += row[0] + '\n'
+    print("aaaaaaaaaaaaaaaa")
+    print(csvString)
+    return (csvString)
 #uvicorn test_api_json:app --reload

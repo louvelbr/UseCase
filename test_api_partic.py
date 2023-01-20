@@ -7,6 +7,7 @@ from statsmodels.tsa.arima.model import ARIMA
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
+from EquipementMaison import EquipementMaison
 
 app = FastAPI()
 
@@ -97,9 +98,14 @@ def electricity_prediction(item: Item):
 
 @app.post("/optimisation_consommation")
 def electricity_optimisation(item: Optim):
-    print("je suis ici", item.size)
-    
-    return ("hello ohohohoh ",item.size, item.nbPeople, "yay")
+    em = EquipementMaison()
+    tmp = em.find_id(item)
+    dossier = em.find_id(item)[0].split("-")[0].split("M")[1]
+    dossier_binaire = em.find_id(item)[2]
+    fichier = em.find_id(item)[0]
+    chemin_acces = "data_optim/res_optim/"+dossier+"/"+dossier_binaire+"/"+fichier+".csv"
+    print("chemin d'accès = ", chemin_acces)
+    return (chemin_acces)
 
 
 #uvicorn test_api_partic:app --reload

@@ -1,6 +1,6 @@
 import React from 'react';
 import './GlobalConsumption.css';
-import * as graph from '../../graphe.json';
+import * as graph from '../../data_opti/graphe.json';
 import Plot from 'react-plotly.js';
 // graph par heure des consos de jenna
 function GlobalConsumption(props) {
