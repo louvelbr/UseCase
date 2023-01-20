@@ -5,6 +5,7 @@ import csvFile from '../../A100-3-1.csv';
 //import cs from '../../data_opti'
 import Papa from 'papaparse';
 import './UseRange.css'
+import Loading from '../Loading/Loading'
 // affiche le planning d'utilisation des équipements (algo de thomas sur la matrice de jenna)
 function UseRange({tab_infos_user_optimisation}) {
     const[answer, setAnswer] = useState("Oui")
@@ -360,7 +361,7 @@ function UseRange({tab_infos_user_optimisation}) {
                         <td>{tab[8].split(",")[23]}</td>
                     </tr>
                 </tbody>
-                : <tr></tr>}
+                : <div className="loading-container"><Loading /></div>}
             </table>
         
                 {/* <div className='proposition' onChange={handleOnChange}>
